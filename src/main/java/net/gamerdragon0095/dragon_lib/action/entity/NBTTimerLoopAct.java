@@ -1,22 +1,22 @@
-package net.gamerdragon525.dragon_lib.action.entity;
+package net.gamerdragon0095.dragon_lib.action.entity;
 
 import net.minecraft.world.entity.Entity;
-import org.spongepowered.tools.obfuscation.interfaces.IMessagerEx;
+//import org.spongepowered.tools.obfuscation.interfaces.IMessagerEx;
 
 import java.util.Calendar;
 
-public class NBTTimerLoop {
+public class NBTTimerLoopAct {
     public static void createNewTimerTag(Entity entity, String name, int ticks, Boolean paused, Boolean doseCountDown) {
         if (entity == null)
             return;
 
         String timerTag = "ticks:[" + ticks + "]" + " ,isPaused:[" + paused + "], doseCountDown:[" + doseCountDown + "]";
 
-        entity.getPersistentData().putString("" + name, timerTag);
+        if(!entity.getPersistentData().getStringOr("TimerLoops", "").isEmpty()) {
+            if (!entity.getPersistentData().getStringOr("TimerLoops", "").substring(14).contains(name)) {
+                entity.getPersistentData().putString("" + name, timerTag);
 
-        if(entity.getPersistentData().getString("TimerLoops").length() >= 1) {
-            if (!entity.getPersistentData().getString("TimerLoops").substring(14).contains(name)) {
-                String amountOfTimers = entity.getPersistentData().getString("TimerLoops").substring(12, entity.getPersistentData().getString("TimerLoops").indexOf(")"));
+                String amountOfTimers = entity.getPersistentData().getStringOr("TimerLoops", "").substring(12, entity.getPersistentData().getStringOr("TimerLoops", "").indexOf(")"));
 
                 int numberOfTimers = new Object() {
                     int convert(String s) {
@@ -29,7 +29,7 @@ public class NBTTimerLoop {
                     }
                 }.convert(amountOfTimers);
 
-                entity.getPersistentData().putString("TimerLoops", "totalLoops:(" + (numberOfTimers + 1) + ")" + entity.getPersistentData().getString("TimerLoops").substring(14) + " ," + (numberOfTimers + 1) + ":[" + name + "])");
+                entity.getPersistentData().putString("TimerLoops", "totalLoops:(" + (numberOfTimers + 1) + ")" + entity.getPersistentData().getStringOr("TimerLoops", "").substring(14) + " ," + (numberOfTimers + 1) + ":[" + name + "])");
             } else {
                 System.out.println("[" + (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) + ":" + Calendar.getInstance().get(Calendar.MINUTE) + ":" + Calendar.getInstance().get(Calendar.SECOND)) + "] [DragonLib] Error: timerTag with name: '" + name + "' for entity: '" + entity.getStringUUID() + "' already exists, please use 'setTicksOfTimerTag' or 'setIsPausedOfTimerTag' to modify existing timerTags");
             }
@@ -42,10 +42,10 @@ public class NBTTimerLoop {
 
     public static void setTicksOfTimerTag(Entity entity, String name, int ticks) {
 
-        if(entity.getPersistentData().getString("" + name).length() >= 1) {
+        if(entity.getPersistentData().getStringOr("" + name, "").length() >= 1) {
 
-            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops");
-            String oldTag = entity.getPersistentData().getString("" + name);
+            String timerLoopsTag = entity.getPersistentData().getStringOr("TimerLoops", "");
+            String oldTag = entity.getPersistentData().getStringOr("" + name, "");
 
             if (timerLoopsTag.substring(12).contains(name)) {
 
@@ -69,9 +69,9 @@ public class NBTTimerLoop {
 
     public static void setIsPausedOfTimerTag(Entity entity, String name, boolean paused) {
 
-        if(entity.getPersistentData().getString("" + name).length() >= 1) {
-            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops");
-            String oldTag = entity.getPersistentData().getString("" + name);
+        if(entity.getPersistentData().getStringOr("" + name, "").length() >= 1) {
+            String timerLoopsTag = entity.getPersistentData().getStringOr("TimerLoops", "");
+            String oldTag = entity.getPersistentData().getStringOr("" + name, "");
 
             if (timerLoopsTag.substring(12).contains(name)) {
 
@@ -95,9 +95,9 @@ public class NBTTimerLoop {
 
     public static void setDoseCountDownOfTimerTag(Entity entity, String name, boolean doseCountDown) {
 
-        if(entity.getPersistentData().getString("" + name).length() >= 1) {
-            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops");
-            String oldTag = entity.getPersistentData().getString("" + name);
+        if(entity.getPersistentData().getStringOr("" + name, "").length() >= 1) {
+            String timerLoopsTag = entity.getPersistentData().getStringOr("TimerLoops", "");
+            String oldTag = entity.getPersistentData().getStringOr("" + name, "");
 
             if (timerLoopsTag.substring(12).contains(name)) {
 

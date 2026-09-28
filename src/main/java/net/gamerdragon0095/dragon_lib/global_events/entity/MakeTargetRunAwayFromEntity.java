@@ -1,4 +1,4 @@
-package net.gamerdragon525.dragon_lib.global_events.entity;
+package net.gamerdragon0095.dragon_lib.global_events.entity;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,11 +26,14 @@ public class MakeTargetRunAwayFromEntity {
         if (entity == null)
             return;
 
-        Entity sourceEntity = entity.level().getEntity((int) entity.getPersistentData().getDouble("scaredOfEntity"));
-        double freezeTime = entity.getPersistentData().getDouble("freezeTime");
+        double entityID_double = entity.getPersistentData().getDoubleOr("scaredOfEntity", -1);
+        int entityID_int = (int) entityID_double;
+
+        Entity sourceEntity = entity.level().getEntity(entityID_int);
+        double freezeTime = entity.getPersistentData().getDoubleOr("freezeTime", -1);
 
         if (sourceEntity == null) {
-            if (entity.getPersistentData().getDouble("scaredOfEntity") != 0) {
+            if (entity.getPersistentData().getDoubleOr("scaredOfEntity", 0) != 0) {
                 if (entity instanceof PathfinderMob _entity) {
                     _entity.setSprinting(false);
                     _entity.getPersistentData().putDouble("scaredOfEntity", 0);
@@ -49,7 +52,7 @@ public class MakeTargetRunAwayFromEntity {
                     _entity.getPersistentData().putDouble("freezeTime", freezeTime - 1);
                 }
             } else {
-                double scaredTimer = entity.getPersistentData().getDouble("scaredTimer");
+                double scaredTimer = entity.getPersistentData().getDoubleOr("scaredTimer", 0);
 
                 double targetX = entity.getX();
                 double targetZ = entity.getZ();
@@ -79,7 +82,7 @@ public class MakeTargetRunAwayFromEntity {
                         if (_entity.isSprinting()) {
                             _entity.setSprinting(false);
                         }
-                        if (_entity.getPersistentData().getDouble("scaredOfEntity") != 0) {
+                        if (_entity.getPersistentData().getDoubleOr("scaredOfEntity", 0) != 0) {
                             _entity.getPersistentData().putDouble("scaredOfEntity", 0);
                         }
                     }
@@ -87,7 +90,7 @@ public class MakeTargetRunAwayFromEntity {
                 }
             }
 
-            Entity scaredOfEntity = entity.level().getEntity((int) entity.getPersistentData().getDouble("scaredOfEntity"));
+            Entity scaredOfEntity = sourceEntity;
 
             if (entity instanceof Mob _entity) {
                 LivingEntity targetEntity = null;

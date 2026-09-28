@@ -1,17 +1,17 @@
-package net.gamerdragon525.dragon_lib.data.entity;
+package net.gamerdragon0095.dragon_lib.data.entity;
 
 import net.minecraft.world.entity.Entity;
 
 import java.util.Calendar;
 
-public class NBTTimerLoop {
+public class NBTTimerLoopDat {
 
     public static int getCurrentTimeOfLoop(Entity entity, String name) {
 
-        if(entity.getPersistentData().getString("" + name).length() >= 1) {
+        if(entity.getPersistentData().getString("" + name).map(str -> str.length() >= 1).orElse(false)) {
 
-            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops");
-            String tag = entity.getPersistentData().getString("" + name);
+            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops").map(str -> str).orElse("");
+            String tag = entity.getPersistentData().getString("" + name).map(str -> str).orElse("");
 
             if (timerLoopsTag.substring(12).contains(name)) {
 
@@ -42,10 +42,10 @@ public class NBTTimerLoop {
 
     public static boolean getCurrentIsPausedOfLoop(Entity entity, String name) {
 
-        if(entity.getPersistentData().getString("" + name).length() >= 1) {
+        if(entity.getPersistentData().getString("" + name).map(str -> str.length() >= 1).orElse(false)) {
 
-            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops");
-            String tag = entity.getPersistentData().getString("" + name);
+            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops").map(str -> str).orElse("");
+            String tag = entity.getPersistentData().getString("" + name).map(str -> str).orElse("");
 
             if (timerLoopsTag.substring(12).contains(name)) {
 
@@ -71,10 +71,10 @@ public class NBTTimerLoop {
 
     public static boolean getCurrentDoseCountDownOfLoop(Entity entity, String name) {
 
-        if(entity.getPersistentData().getString("" + name).length() >= 1) {
+        if(entity.getPersistentData().getString("" + name).map(str -> str.length() >= 1).orElse(false)) {
 
-            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops");
-            String tag = entity.getPersistentData().getString("" + name);
+            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops").map(str -> str).orElse("");
+            String tag = entity.getPersistentData().getString("" + name).map(str -> str).orElse("");
 
             if (timerLoopsTag.substring(12).contains(name)) {
 
@@ -99,10 +99,10 @@ public class NBTTimerLoop {
     }
 
     public static boolean doesLoopExist(Entity entity, String name) {
-        if(entity.getPersistentData().getString("" + name).length() >= 1) {
+        if(entity.getPersistentData().getString("" + name).map(str-> str.length() >= 1).orElse(false)) {
 
-            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops");
-            String tag = entity.getPersistentData().getString("" + name);
+            String timerLoopsTag = entity.getPersistentData().getString("TimerLoops").map(str -> str).orElse("");
+            String tag = entity.getPersistentData().getString("" + name).map(str -> str).orElse("");
 
             if (timerLoopsTag.substring(12).contains(name)) {
                 return true;

@@ -1,4 +1,4 @@
-package net.gamerdragon525.dragon_lib.data.entity;
+package net.gamerdragon0095.dragon_lib.data.entity;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
