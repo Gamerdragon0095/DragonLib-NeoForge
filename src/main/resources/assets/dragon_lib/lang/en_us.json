@@ -1,3 +1,13 @@
 {
+  "itemGroup.dragon_lib": "Example Mod Tab",
+  "block.dragon_lib.example_block": "Example Block",
+  "item.dragon_lib.example_item": "Example Item",
 
+  "dragon_lib.configuration.title": "Dragon Lib Configs",
+  "dragon_lib.configuration.section.dragon_lib.common.toml": "Dragon Lib Configs",
+  "dragon_lib.configuration.section.dragon_lib.common.toml.title": "Dragon Lib Configs",
+  "dragon_lib.configuration.items": "Item List",
+  "dragon_lib.configuration.logDirtBlock": "Log Dirt Block",
+  "dragon_lib.configuration.magicNumberIntroduction": "Magic Number Text",
+  "dragon_lib.configuration.magicNumber": "Magic Number"
 }
