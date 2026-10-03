@@ -26,7 +26,7 @@ Until I have a better understanding of what I'll have to explain I'll just say t
     }
     
     dependencies {
-        implementation 'com.github.Gamerdragon0095:DragonLib-NeoForge:v26-1.0.0'
+        implementation 'com.github.Gamerdragon0095:DragonLib-NeoForge:v26-1.0.1'
     }
 
 Note that this code is an example and to get the latest version of the mod or the version your looking for you might have to change the "26-1.0.0" to something else.
