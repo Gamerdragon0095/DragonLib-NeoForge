@@ -160,13 +160,13 @@ neoForge.ideSyncTask generateModMetadata
 // Example configuration to allow publishing using the maven-publish plugin
 publishing {
     publications {
-        register('mavenJava', MavenPublication) {
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/repo"
+        mavenJava(MavenPublication) {
+            // Force the publication to use the finalized archive task artifact
+            artifact tasks.jar
+
+            groupId = 'com.github.Gamerdragon0095'
+            artifactId = 'DragonLib-NeoForge'
+            version = 'v26-1.0.1'
         }
     }
 }
