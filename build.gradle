@@ -166,7 +166,7 @@ publishing {
 
             groupId = 'com.github.Gamerdragon0095'
             artifactId = 'DragonLib-NeoForge'
-            version = 'v26-1.0.1'
+            version = 'v26-1.0.2'
         }
     }
 }
